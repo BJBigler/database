@@ -28,15 +28,14 @@ func New(db *sqlx.DB) *DB {
 }
 
 //Connect returns a database connection
-func Connect(conn string) *DB {
+func Connect(conn string) (*DB, error) {
 	connection, err := sqlx.Open("mysql", conn)
 
 	if err != nil {
-		utils.Log(err)
-		return nil
+		return nil, err
 	}
 	db := New(connection)
-	return db
+	return db, nil
 }
 
 //Named is used to provide a SQL statement and
