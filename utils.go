@@ -7,7 +7,7 @@ import "strings"
 //query work with a slice, e.g.,
 //"SELECT * FROM table WHERE ids IN (?, ?, ?), where
 //the ?, ?, ? gets replaced by a slice with three items
-func QuestionMarks(cnt int) string {
+func (db *DB) QuestionMarks(cnt int) string {
 
 	marks := []string{}
 	for i := 0; i < cnt; i++ {
