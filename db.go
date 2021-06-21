@@ -24,6 +24,7 @@ type DB struct {
 //New ...
 func New(db *sqlx.DB) *DB {
 	// Configure any package-level settings
+	db = db.Unsafe()
 	return &DB{db}
 }
 
@@ -34,7 +35,9 @@ func Connect(conn string) (*DB, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	db := New(connection)
+
 	return db, nil
 }
 
