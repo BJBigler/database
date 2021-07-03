@@ -104,7 +104,7 @@ func (db *DB) ExecNamedList(namedList []*Named) []error {
 	var errors []error
 
 	if len(namedList) > 20 {
-		return []error{fmt.Errorf("Sql statements exceeded 20, aborting")}
+		return []error{fmt.Errorf("more than 20 sql statements, aborting")}
 	}
 
 	//db = sqlx.MustConnect("mysql", conn)
@@ -133,7 +133,7 @@ func (db *DB) ExecNamedListAsTransaction(namedList []*Named) []error {
 	var errors []error
 
 	if len(namedList) > 20 {
-		return []error{fmt.Errorf("Sql statements exceeded 20, aborting")}
+		return []error{fmt.Errorf("more than 20 sql statements, aborting")}
 	}
 
 	//db = sqlx.MustConnect("mysql", conn)
@@ -169,7 +169,7 @@ func (db *DB) ExecNamedListAsTransaction(namedList []*Named) []error {
 //Statement count should not exceed 20.
 func (db *DB) ExecListAsTransaction(sql []string) error {
 	if len(sql) > 20 {
-		return fmt.Errorf("Sql statements exceeded 20, aborting")
+		return fmt.Errorf("more than 20 sql statements, aborting")
 	}
 
 	//db = sqlx.MustConnect("mysql", conn)
@@ -222,12 +222,12 @@ func (db *DB) GetRows(parseRows func(*sqlx.Rows), sql string, sqlArgs ...interfa
 		return fmt.Errorf("error GetRows(): %v", err)
 	}
 
-	defer rows.Close()
-
 	if rows == nil {
 		//utils.Log(fmt.Sprintf("No rows returned with SQL: \n%s", sql))
 		return fmt.Errorf("no rows returned with SQL: %s", sql)
 	}
+
+	defer rows.Close()
 
 	parseRows(rows)
 
@@ -269,6 +269,9 @@ func (db *DB) GetRowsInQuery(parseRows func(*sqlx.Rows), sql string, array inter
 	// setConnections(db)
 
 	query, args, err := sqlx.In(sql, array)
+	if err != nil {
+		utils.Log(fmt.Sprintf("%v\n%v", err, sql))
+	}
 	query = db.Rebind(query)
 	rows, err := db.Queryx(query, args...)
 	//Check error before closing rows!
@@ -406,7 +409,7 @@ func (db *DB) Int64Scalar(sqlStr string, args ...interface{}) (int64, error) {
 	}
 }
 
-func setConnections(db *sqlx.DB) {
-	db.SetMaxOpenConns(20)
-	db.SetMaxIdleConns(20)
-}
+// func setConnections(db *sqlx.DB) {
+// 	db.SetMaxOpenConns(20)
+// 	db.SetMaxIdleConns(20)
+// }
