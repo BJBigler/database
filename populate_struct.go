@@ -117,7 +117,7 @@ func StructFromForm(ptr interface{}, r *http.Request, processAllKeys bool, locat
 				location = loc()
 			}
 
-			dateValue := utils.ParseDateMulti(postedValue)
+			dateValue := utils.ParseDateMulti(postedValue, location)
 			value = GetNullTime(dateValue, location)
 		}
 
