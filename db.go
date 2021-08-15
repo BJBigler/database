@@ -103,9 +103,9 @@ func (db *DB) ExecNamedList(namedList []*Named) []error {
 	//utils.Log("Starting exec named list")
 	var errors []error
 
-	if len(namedList) > 20 {
-		return []error{fmt.Errorf("more than 20 sql statements, aborting")}
-	}
+	// if len(namedList) > 20 {
+	// 	return []error{fmt.Errorf("more than 20 sql statements, aborting")}
+	// }
 
 	//db = sqlx.MustConnect("mysql", conn)
 	//defer db.Close()
