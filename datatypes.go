@@ -59,7 +59,11 @@ func (nt *NullTime) Scan(value interface{}) (err error) {
 	}
 
 	if nt.Location == nil {
-		nt.Location = time.UTC
+		//nt.Location = time.UTC
+		nt.Location, err = time.LoadLocation("America/New_York")
+		if err != nil {
+			nt.Location = time.UTC
+		}
 	}
 	//loc, _ := time.LoadLocation("America/Los_Angeles") //Changed back to UTC on 2018-06-26
 
@@ -70,11 +74,11 @@ func (nt *NullTime) Scan(value interface{}) (err error) {
 	case []byte:
 
 		parseValue := string(v)
-		if len(parseValue) == 10 {
-			//If the value doesn't have any time information,
-			//parse it in New York
-			nt.Location, _ = time.LoadLocation("America/New_York")
-		}
+		// if len(parseValue) == 10 {
+		// 	//If the value doesn't have any time information,
+		// 	//parse it in New York
+		// 	nt.Location, _ = time.LoadLocation("America/New_York")
+		// }
 
 		nt.Time, err = parseDateTime(parseValue, nt.Location)
 		nt.Valid = (err == nil)
