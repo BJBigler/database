@@ -5,8 +5,8 @@ github.com/andybalholm/cascadia v1.3.2 h1:3Xi6Dw5lHF15JtdcmAHD3i1+T8plmv7BQ/nsVi
 github.com/andybalholm/cascadia v1.3.2/go.mod h1:7gtRlve5FxPPgIgX36uWBX58OdBsSS6lUvCFb+h7KvU=
 github.com/araddon/dateparse v0.0.0-20210429162001-6b43995a97de h1:FxWPpzIjnTlhPwqqXc4/vE0f7GvRjuAsbW+HOIe8KnA=
 github.com/araddon/dateparse v0.0.0-20210429162001-6b43995a97de/go.mod h1:DCaWoUhZrYW9p1lxo/cm8EmUOOzAPSEZNGF2DK1dJgw=
-github.com/bjbigler/utils v0.0.0-20230503124747-0104706eddf9 h1:m+p34dkCPDDtS/K2BiFjM4gaX4AvgkHkxu3TeUGKNK4=
-github.com/bjbigler/utils v0.0.0-20230503124747-0104706eddf9/go.mod h1:92h7HCJE7Tb62YjJtrFO3uzN4eblpGbJ3jnNLNNjKXI=
+github.com/bjbigler/utils v0.0.0-20230516011410-5702185e2636 h1:zZxtQ+9i/hHWaxSXCF7bKgHlF8kCoDX+lGRnvPJ/vzs=
+github.com/bjbigler/utils v0.0.0-20230516011410-5702185e2636/go.mod h1:X0WaCP0rs0W1Oo94vHhgo4bZSWaOfpy+Yhy1hgUILx4=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/go-sql-driver/mysql v1.6.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
